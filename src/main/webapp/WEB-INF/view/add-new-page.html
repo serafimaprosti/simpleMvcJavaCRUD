@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>add-new-user</title>
+</head>
+<body>
+
+<style>
+    .error{
+        color: red;
+        font-weight: bold;
+    }
+    input{
+        width: 20%;
+    }
+    .button{
+        border: none;
+        background-color: blue;
+        color: #FFF;
+        margin-top: 5px;
+        border-radius: 5px;
+    }
+</style>
+<div class="container">
+    <div class="panel-heading">
+        <h2 class="panel-title">add user</h2>
+    </div>
+    <div class="input-group">
+        <form th:action="@{/new}" th:method="POST" th:object="${userForm}">
+
+            <label for="userName">name</label><br>
+            <input type="text" id="userName" name="userName" th:field="*{userName}" placeholder="name"/>
+            <span class="error" th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span>
+            <br>
+
+
+            <label for="userSurname">surname</label><br>
+            <input type="text" id="userSurname" name="userSurname" th:field="*{userSurname}" placeholder="surname"/>
+            <span class="error" th:if="${#fields.hasErrors('userSurname')}" th:errors="*{userSurname}"></span>
+            <br>
+
+
+            <label for="userAge">age</label><br>
+            <input type="text" id="userAge" name="userAge" th:field="*{userAge}" placeholder="age"/>
+            <span class="error" th:if="${#fields.hasErrors('userAge')}" th:errors="*{userAge}"></span>
+            <br>
+
+
+            <label for="userEmail">email</label><br>
+            <input type="email" id="userEmail" name="userEmail" th:field="*{userEmail}" placeholder="email"/>
+            <span class="error" th:if="${#fields.hasErrors('userEmail')}" th:errors="*{userEmail}"></span>
+            <br>
+
+            <button class="button" type="submit">create</button>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>
